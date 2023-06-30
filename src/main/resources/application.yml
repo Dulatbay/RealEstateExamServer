@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:RealStateExam}?currentSchema=${DEFAULT_SCHEMA:public}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:123456}
+    driver-class-name: ${DRIVER_CLASS_NAME:org.postgresql.Driver}
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-request-size: 215MB
+      max-file-size: 200MB
+  jpa:
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+        format_sql: true
+        default_schema: ${DEFAULT_SCHEMA:public}
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: ${JPA_SHOW_SQL:false}
+file:
+  upload-dir: ./src/main/resources/static
+server:
+  port: 8080
